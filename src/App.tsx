@@ -126,7 +126,10 @@ export default function App() {
   const kopfPercent = summary.throws > 0 ? (summary.kopfCount / summary.throws) * 100 : 0;
   const detailFactor = DETAIL_FACTORS[detailLevel - 1] ?? DETAIL_FACTORS[DETAIL_FACTORS.length - 1];
   const displaySide = isTossing ? coinFace : summary.currentSide;
-  const coinImage = displaySide === 'zahl' ? '/assets/Euro Belgien Zahl Klein.png' : '/assets/Euro Belgien Kopf Klein.png';
+  const coinImage =
+    displaySide === 'zahl'
+      ? `${import.meta.env.BASE_URL}assets/Euro Belgien Zahl Klein.png`
+      : `${import.meta.env.BASE_URL}assets/Euro Belgien Kopf Klein.png`;
   const coinAlt = displaySide === 'zahl' ? 'Münze zeigt Zahl' : 'Münze zeigt Kopf';
   const burstVariantClass = burstCount === 1000 ? ' burst-1000' : burstCount === 50 ? ' burst-50' : burstCount === 10 ? ' burst-10' : '';
   const hasStartedThrowing = summary.throws > 0 || isTossing;
