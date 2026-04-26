@@ -3,9 +3,10 @@ import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 
 const basePath = process.env.BASE_PATH ?? '/';
+const normalizedBasePath = basePath.endsWith('/') ? basePath : `${basePath}/`;
 
 export default defineConfig({
-  base: basePath,
+  base: normalizedBasePath,
   plugins: [
     react(),
     VitePWA({
@@ -15,8 +16,9 @@ export default defineConfig({
         name: 'Münzwurf',
         short_name: 'Münzwurf',
         description: 'Simulation zum Gesetz der großen Zahlen beim Münzwurf.',
-        start_url: '/',
-        scope: '/',
+        id: normalizedBasePath,
+        start_url: normalizedBasePath,
+        scope: normalizedBasePath,
         display: 'standalone',
         background_color: '#182b48',
         theme_color: '#5f49da',
